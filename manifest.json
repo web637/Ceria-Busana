@@ -1,0 +1,17 @@
+{
+  "name": "Ceria Busana",
+  "short_name": "CeriaBusana",
+  "description": "Toko baju anak dan daster wanita premium",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#fdf4ff",
+  "theme_color": "#c084fc",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "categories": ["shopping", "lifestyle"],
+  "lang": "id",
+  "dir": "ltr"
+}

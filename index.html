@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ceria Busana – Toko baju anak & daster wanita premium. Custom ukuran, bahan, motif. Belanja mudah, checkout via WhatsApp." />
+  <meta name="keywords" content="baju anak, daster wanita, pakaian anak, daster murah, baju custom, toko online" />
+  <meta property="og:title" content="Ceria Busana – Baju Anak & Daster Wanita Premium" />
+  <meta property="og:description" content="Belanja baju anak dan daster wanita premium. Custom ukuran & motif sesuka hati!" />
+  <meta property="og:type" content="website" />
+  <title>Ceria Busana – Baju Anak & Daster Wanita Premium</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#c084fc" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ========== LOADER ========== -->
+<div id="page-loader">
+  <div class="loader-logo">
+    <span class="loader-icon">🌸</span>
+    <span class="loader-text">Ceria Busana</span>
+  </div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
+
+<!-- ========== TOAST NOTIFICATIONS ========== -->
+<div id="toast-container"></div>
+
+<!-- ========== HEADER ========== -->
+<header id="main-header">
+  <div class="header-inner">
+    <div class="header-logo" id="logo-tap-area">
+      <span class="logo-icon">🌸</span>
+      <div class="logo-text">
+        <span class="logo-main">Ceria Busana</span>
+        <span class="logo-sub">Baju Anak & Daster Premium</span>
+      </div>
+    </div>
+
+    <div class="header-search">
+      <div class="search-box">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="search-input" placeholder="Cari baju anak, daster wanita..." autocomplete="off" />
+        <div id="search-results" class="search-dropdown"></div>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button class="btn-icon" id="theme-toggle" title="Toggle Dark Mode">
+        <i class="fas fa-moon" id="theme-icon"></i>
+      </button>
+      <button class="btn-icon wishlist-btn" id="wishlist-btn">
+        <i class="fas fa-heart"></i>
+        <span class="badge" id="wishlist-count">0</span>
+      </button>
+      <button class="btn-icon cart-btn" id="cart-btn">
+        <i class="fas fa-shopping-bag"></i>
+        <span class="badge" id="cart-count">0</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Category Nav -->
+  <nav class="category-nav">
+    <div class="category-nav-inner">
+      <button class="cat-pill active" data-cat="all">Semua</button>
+      <button class="cat-pill" data-cat="baju-anak">👶 Baju Anak</button>
+      <button class="cat-pill" data-cat="daster">👗 Daster Wanita</button>
+      <button class="cat-pill" data-cat="flash-sale">⚡ Flash Sale</button>
+      <button class="cat-pill" data-cat="custom">✨ Custom</button>
+      <button class="cat-pill" data-cat="bestseller">🔥 Best Seller</button>
+    </div>
+  </nav>
+</header>
+
+<!-- ========== MAIN CONTENT ========== -->
+<main id="main-content">
+
+  <!-- BANNER SLIDER -->
+  <section class="banner-section">
+    <div class="banner-slider" id="banner-slider">
+      <div class="banner-slide active" style="background: linear-gradient(135deg, #f472b6 0%, #c084fc 45%, #818cf8 100%);">
+        <div class="banner-content">
+          <span class="banner-badge">✨ New Collection 2025</span>
+          <h1>Daster Premium<br><strong>Wanita Cantik</strong></h1>
+          <p>Bahan rayon super lembut, motif cantik eksklusif, nyaman sepanjang hari. Harga mulai Rp 79.000!</p>
+          <div class="banner-btns">
+            <button class="btn-primary" onclick="filterCategory('daster')"><i class="fas fa-shopping-bag"></i> Belanja Sekarang</button>
+            <button class="btn-ghost" onclick="scrollToSection('ai-preview')"><i class="fas fa-magic"></i> Coba AI Preview</button>
+          </div>
+        </div>
+        <div class="banner-decoration">
+          <div class="deco-circle c1"></div>
+          <div class="deco-circle c2"></div>
+          <div class="deco-circle c3"></div>
+          <div class="banner-emoji">👗</div>
+        </div>
+      </div>
+      <div class="banner-slide" style="background: linear-gradient(135deg, #fb923c 0%, #f43f5e 45%, #c084fc 100%);">
+        <div class="banner-content">
+          <span class="banner-badge">⚡ Flash Sale – Hari Ini!</span>
+          <h1>Baju Anak<br><strong>Lucu & Berkualitas</strong></h1>
+          <p>Diskon hingga 50%! Bahan katun 100% aman untuk si kecil. Stok terbatas, jangan sampai kehabisan!</p>
+          <div class="banner-btns">
+            <button class="btn-primary" onclick="filterCategory('flash-sale')"><i class="fas fa-bolt"></i> Flash Sale</button>
+            <button class="btn-ghost" onclick="filterCategory('baju-anak')"><i class="fas fa-child"></i> Lihat Semua</button>
+          </div>
+        </div>
+        <div class="banner-decoration">
+          <div class="deco-circle c1"></div>
+          <div class="deco-circle c2"></div>
+          <div class="deco-circle c3"></div>
+          <div class="banner-emoji">👶</div>
+        </div>
+      </div>
+      <div class="banner-slide" style="background: linear-gradient(135deg, #34d399 0%, #0ea5e9 45%, #6366f1 100%);">
+        <div class="banner-content">
+          <span class="banner-badge">🎨 Custom Order Tersedia</span>
+          <h1>Pakaian Custom<br><strong>Sesuai Keinginan</strong></h1>
+          <p>Pilih sendiri bahan, motif, warna & ukuran tepat. Dibuat khusus untukmu dengan harga terjangkau!</p>
+          <div class="banner-btns">
+            <button class="btn-primary" onclick="scrollToSection('custom-section')"><i class="fas fa-cut"></i> Custom Sekarang</button>
+            <button class="btn-ghost" onclick="scrollToSection('ai-preview')"><i class="fas fa-eye"></i> AI Preview</button>
+          </div>
+        </div>
+        <div class="banner-decoration">
+          <div class="deco-circle c1"></div>
+          <div class="deco-circle c2"></div>
+          <div class="deco-circle c3"></div>
+          <div class="banner-emoji">✂️</div>
+        </div>
+      </div>
+    </div>
+    <div class="banner-dots" id="banner-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+    <button class="banner-nav prev" id="banner-prev"><i class="fas fa-chevron-left"></i></button>
+    <button class="banner-nav next" id="banner-next"><i class="fas fa-chevron-right"></i></button>
+  </section>
+
+  <!-- STAT STRIP (PC only) -->
+  <div class="stat-strip">
+    <div class="stat-strip-item">
+      <div class="stat-strip-icon">🚀</div>
+      <div class="stat-strip-text"><strong>Pengiriman Cepat</strong><span>Same-day & next-day delivery</span></div>
+    </div>
+    <div class="stat-strip-item">
+      <div class="stat-strip-icon">✅</div>
+      <div class="stat-strip-text"><strong>Kualitas Terjamin</strong><span>Bahan premium pilihan terbaik</span></div>
+    </div>
+    <div class="stat-strip-item">
+      <div class="stat-strip-icon">🎨</div>
+      <div class="stat-strip-text"><strong>Custom Order</strong><span>Ukuran, motif & warna bebas</span></div>
+    </div>
+    <div class="stat-strip-item">
+      <div class="stat-strip-icon">💬</div>
+      <div class="stat-strip-text"><strong>Respon Cepat</strong><span>Admin aktif 07.00 – 21.00 WIB</span></div>
+    </div>
+  </div>
+
+  <!-- FLASH SALE COUNTDOWN -->
+  <section class="flash-sale-section" id="flash-sale">
+    <div class="container">
+      <div class="flash-header">
+        <div class="flash-title">
+          <span class="flash-icon">⚡</span>
+          <h2>Flash Sale</h2>
+          <span class="flash-subtitle">Berakhir dalam:</span>
+        </div>
+        <div class="countdown" id="countdown">
+          <div class="count-box"><span id="cd-hours">00</span><label>Jam</label></div>
+          <div class="count-sep">:</div>
+          <div class="count-box"><span id="cd-mins">00</span><label>Menit</label></div>
+          <div class="count-sep">:</div>
+          <div class="count-box"><span id="cd-secs">00</span><label>Detik</label></div>
+        </div>
+        <button class="btn-see-all" onclick="filterCategory('flash-sale')">Lihat Semua <i class="fas fa-arrow-right"></i></button>
+      </div>
+      <div class="products-row" id="flash-sale-products">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORY GRID -->
+  <section class="categories-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Kategori Produk</h2>
+        <p>Temukan koleksi favorit Anda</p>
+      </div>
+      <div class="category-grid">
+        <div class="cat-card" onclick="filterCategory('baju-anak')">
+          <div class="cat-emoji">👶</div>
+          <div class="cat-info">
+            <h3>Baju Anak</h3>
+            <p>Koleksi lucu & nyaman</p>
+          </div>
+          <div class="cat-arrow"><i class="fas fa-arrow-right"></i></div>
+        </div>
+        <div class="cat-card" onclick="filterCategory('daster')">
+          <div class="cat-emoji">👗</div>
+          <div class="cat-info">
+            <h3>Daster Wanita</h3>
+            <p>Elegan & premium</p>
+          </div>
+          <div class="cat-arrow"><i class="fas fa-arrow-right"></i></div>
+        </div>
+        <div class="cat-card" onclick="filterCategory('custom')">
+          <div class="cat-emoji">✨</div>
+          <div class="cat-info">
+            <h3>Custom Order</h3>
+            <p>Sesuai ukuran & selera</p>
+          </div>
+          <div class="cat-arrow"><i class="fas fa-arrow-right"></i></div>
+        </div>
+        <div class="cat-card" onclick="filterCategory('flash-sale')">
+          <div class="cat-emoji">⚡</div>
+          <div class="cat-info">
+            <h3>Flash Sale</h3>
+            <p>Diskon hingga 50%</p>
+          </div>
+          <div class="cat-arrow"><i class="fas fa-arrow-right"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POPULAR PRODUCTS -->
+  <section class="products-section" id="popular-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>🔥 Produk Populer</h2>
+        <button class="btn-see-all" onclick="filterCategory('bestseller')">Lihat Semua <i class="fas fa-arrow-right"></i></button>
+      </div>
+      <div class="products-grid" id="popular-products">
+        <!-- Filled by JS skeleton then products -->
+      </div>
+    </div>
+  </section>
+
+  <!-- LATEST PRODUCTS -->
+  <section class="products-section" id="latest-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>🆕 Produk Terbaru</h2>
+        <button class="btn-see-all" id="view-all-btn">Lihat Semua <i class="fas fa-arrow-right"></i></button>
+      </div>
+      <!-- Filter bar -->
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">Semua</button>
+        <button class="filter-btn" data-filter="baju-anak">Baju Anak</button>
+        <button class="filter-btn" data-filter="daster">Daster</button>
+        <div class="filter-sort">
+          <select id="sort-select">
+            <option value="newest">Terbaru</option>
+            <option value="price-low">Harga Terendah</option>
+            <option value="price-high">Harga Tertinggi</option>
+            <option value="rating">Rating Tertinggi</option>
+            <option value="sold">Terlaris</option>
+          </select>
+        </div>
+      </div>
+      <div class="products-grid" id="all-products">
+        <!-- Filled by JS -->
+      </div>
+      <div class="load-more-wrap">
+        <button class="btn-load-more" id="load-more-btn">Muat Lebih Banyak</button>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- CUSTOM ORDER SECTION -->
+  <section class="custom-section" id="custom-section">
+    <div class="container">
+      <div class="section-header centered">
+        <h2>✂️ Custom Order</h2>
+        <p>Pesan pakaian sesuai ukuran dan keinginan Anda</p>
+      </div>
+      <div class="custom-form-card">
+        <div class="custom-form-header">
+          <div class="custom-steps">
+            <div class="step active" data-step="1"><span>1</span> Pilih Jenis</div>
+            <div class="step-line"></div>
+            <div class="step" data-step="2"><span>2</span> Ukuran</div>
+            <div class="step-line"></div>
+            <div class="step" data-step="3"><span>3</span> Detail</div>
+            <div class="step-line"></div>
+            <div class="step" data-step="4"><span>4</span> Konfirmasi</div>
+          </div>
+        </div>
+
+        <!-- Step 1: Jenis Pakaian -->
+        <div class="custom-step-content active" id="custom-step-1">
+          <h3>Pilih Jenis Pakaian</h3>
+          <div class="custom-type-grid">
+            <label class="custom-type-card">
+              <input type="radio" name="custom-type" value="daster" />
+              <div class="type-card-inner">
+                <span class="type-emoji">👗</span>
+                <span>Daster Wanita</span>
+              </div>
+            </label>
+            <label class="custom-type-card">
+              <input type="radio" name="custom-type" value="baju-anak" />
+              <div class="type-card-inner">
+                <span class="type-emoji">👶</span>
+                <span>Baju Anak</span>
+              </div>
+            </label>
+            <label class="custom-type-card">
+              <input type="radio" name="custom-type" value="piyama" />
+              <div class="type-card-inner">
+                <span class="type-emoji">😴</span>
+                <span>Piyama</span>
+              </div>
+            </label>
+            <label class="custom-type-card">
+              <input type="radio" name="custom-type" value="gamis" />
+              <div class="type-card-inner">
+                <span class="type-emoji">🧕</span>
+                <span>Gamis</span>
+              </div>
+            </label>
+          </div>
+          <div class="custom-nav">
+            <button class="btn-primary next-step" data-next="2">Selanjutnya <i class="fas fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- Step 2: Ukuran -->
+        <div class="custom-step-content" id="custom-step-2">
+          <h3>Input Ukuran</h3>
+          <div class="size-mode-toggle">
+            <button class="size-mode active" data-mode="standar">Ukuran Standar</button>
+            <button class="size-mode" data-mode="custom">Ukuran Custom (cm)</button>
+          </div>
+          <!-- Standar sizes -->
+          <div class="standar-sizes" id="standar-sizes">
+            <div class="size-grid">
+              <label class="size-card"><input type="radio" name="size" value="S" /><span>S</span></label>
+              <label class="size-card"><input type="radio" name="size" value="M" /><span>M</span></label>
+              <label class="size-card"><input type="radio" name="size" value="L" /><span>L</span></label>
+              <label class="size-card"><input type="radio" name="size" value="XL" /><span>XL</span></label>
+              <label class="size-card"><input type="radio" name="size" value="XXL" /><span>XXL</span></label>
+              <label class="size-card"><input type="radio" name="size" value="3XL" /><span>3XL</span></label>
+            </div>
+          </div>
+          <!-- Custom sizes -->
+          <div class="custom-sizes hidden" id="custom-sizes">
+            <div class="size-inputs">
+              <div class="size-input-group">
+                <label>Tinggi Badan (cm)</label>
+                <input type="number" class="size-input" id="c-tinggi" placeholder="contoh: 158" min="50" max="220" />
+              </div>
+              <div class="size-input-group">
+                <label>Berat Badan (kg)</label>
+                <input type="number" class="size-input" id="c-berat" placeholder="contoh: 55" min="10" max="200" />
+              </div>
+              <div class="size-input-group">
+                <label>Lingkar Dada (cm)</label>
+                <input type="number" class="size-input" id="c-dada" placeholder="contoh: 88" />
+              </div>
+              <div class="size-input-group">
+                <label>Lingkar Pinggang (cm)</label>
+                <input type="number" class="size-input" id="c-pinggang" placeholder="contoh: 70" />
+              </div>
+              <div class="size-input-group">
+                <label>Lingkar Pinggul (cm)</label>
+                <input type="number" class="size-input" id="c-pinggul" placeholder="contoh: 94" />
+              </div>
+              <div class="size-input-group">
+                <label>Panjang Pakaian (cm)</label>
+                <input type="number" class="size-input" id="c-panjang" placeholder="contoh: 120" />
+              </div>
+              <div class="size-input-group">
+                <label>Lingkar Lengan (cm)</label>
+                <input type="number" class="size-input" id="c-lengan" placeholder="contoh: 30" />
+              </div>
+              <div class="size-input-group">
+                <label>Panjang Lengan (cm)</label>
+                <input type="number" class="size-input" id="c-panjang-lengan" placeholder="contoh: 55" />
+              </div>
+            </div>
+          </div>
+          <div class="custom-nav">
+            <button class="btn-ghost prev-step" data-prev="1"><i class="fas fa-arrow-left"></i> Kembali</button>
+            <button class="btn-primary next-step" data-next="3">Selanjutnya <i class="fas fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- Step 3: Detail -->
+        <div class="custom-step-content" id="custom-step-3">
+          <h3>Detail Pakaian</h3>
+          <div class="detail-inputs">
+            <div class="detail-group">
+              <label>Bahan Kain</label>
+              <select id="c-bahan" class="detail-select">
+                <option value="">Pilih bahan...</option>
+                <option value="katun">Katun – Adem & Nyaman</option>
+                <option value="rayon">Rayon – Halus & Jatuh</option>
+                <option value="premium-katun">Premium Katun – Tebal Berkualitas</option>
+                <option value="jersey">Jersey – Elastis</option>
+                <option value="mori">Mori – Ringan</option>
+                <option value="linen">Linen – Natural</option>
+              </select>
+            </div>
+            <div class="detail-group">
+              <label>Motif</label>
+              <select id="c-motif" class="detail-select">
+                <option value="">Pilih motif...</option>
+                <option value="polos">Polos</option>
+                <option value="bunga">Bunga-bunga</option>
+                <option value="batik">Batik</option>
+                <option value="polkadot">Polkadot</option>
+                <option value="garis">Garis</option>
+                <option value="abstrak">Abstrak Modern</option>
+                <option value="custom-motif">Custom (sertakan referensi)</option>
+              </select>
+            </div>
+            <div class="detail-group">
+              <label>Warna Utama</label>
+              <input type="color" id="c-warna" value="#f9a8d4" class="color-picker" />
+              <input type="text" id="c-warna-text" placeholder="atau ketik nama warna..." class="color-text-input" />
+            </div>
+            <div class="detail-group">
+              <label>Model / Desain Khusus</label>
+              <textarea id="c-model" placeholder="Deskripsikan model yang diinginkan, contoh: daster lengan pendek, bukaan depan, ada kantong..." rows="3" class="detail-textarea"></textarea>
+            </div>
+            <div class="detail-group">
+              <label>Upload Foto Referensi (Opsional)</label>
+              <div class="upload-area" id="ref-upload-area">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>Klik atau drag foto referensi</p>
+                <input type="file" id="ref-image" accept="image/*" multiple style="display:none" />
+              </div>
+              <div id="ref-preview-list" class="ref-preview-list"></div>
+            </div>
+            <div class="detail-group">
+              <label>Catatan Tambahan</label>
+              <textarea id="c-notes" placeholder="Catatan khusus untuk admin..." rows="2" class="detail-textarea"></textarea>
+            </div>
+          </div>
+          <div class="custom-nav">
+            <button class="btn-ghost prev-step" data-prev="2"><i class="fas fa-arrow-left"></i> Kembali</button>
+            <button class="btn-primary next-step" data-next="4">Selanjutnya <i class="fas fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- Step 4: Konfirmasi -->
+        <div class="custom-step-content" id="custom-step-4">
+          <h3>Konfirmasi Pesanan Custom</h3>
+          <div id="custom-summary" class="custom-summary"></div>
+          <div class="detail-group">
+            <label>Nama Pemesan</label>
+            <input type="text" id="c-nama" placeholder="Nama lengkap Anda" class="size-input" />
+          </div>
+          <div class="detail-group">
+            <label>Nomor WhatsApp</label>
+            <input type="tel" id="c-wa" placeholder="Contoh: 08123456789" class="size-input" />
+          </div>
+          <div class="detail-group">
+            <label>Alamat Pengiriman</label>
+            <textarea id="c-alamat" placeholder="Alamat lengkap pengiriman..." rows="3" class="detail-textarea"></textarea>
+          </div>
+          <div class="custom-price-info">
+            <p>💡 Harga custom dihitung berdasarkan jenis, bahan, dan ukuran. Admin akan menginformasikan harga melalui WhatsApp.</p>
+          </div>
+          <div class="custom-nav">
+            <button class="btn-ghost prev-step" data-prev="3"><i class="fas fa-arrow-left"></i> Kembali</button>
+            <button class="btn-primary" id="submit-custom-btn">
+              <i class="fab fa-whatsapp"></i> Kirim ke WhatsApp Admin
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="section-header centered">
+        <h2>⭐ Testimoni Pelanggan</h2>
+        <p>Ribuan pelanggan puas berbelanja di Ceria Busana</p>
+      </div>
+      <div class="testimonials-slider" id="testimonials-slider">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer id="main-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <span>🌸</span> Ceria Busana
+      </div>
+      <p>Toko baju anak dan daster wanita premium. Kualitas terbaik, harga terjangkau, custom sesuai keinginan Anda.</p>
+      <div class="footer-socials">
+        <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" class="social-btn"><i class="fab fa-tiktok"></i></a>
+        <a href="#" class="social-btn"><i class="fab fa-facebook"></i></a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <h4>Produk</h4>
+      <ul>
+        <li><a href="#" onclick="filterCategory('baju-anak')">Baju Anak</a></li>
+        <li><a href="#" onclick="filterCategory('daster')">Daster Wanita</a></li>
+        <li><a href="#" onclick="filterCategory('flash-sale')">Flash Sale</a></li>
+        <li><a href="#" onclick="scrollToSection('custom-section')">Custom Order</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Informasi</h4>
+      <ul>
+        <li><a href="#">Cara Pemesanan</a></li>
+        <li><a href="#">Panduan Ukuran</a></li>
+        <li><a href="#">Kebijakan Pengiriman</a></li>
+        <li><a href="#">Kebijakan Pengembalian</a></li>
+      </ul>
+    </div>
+    <div class="footer-contact">
+      <h4>Hubungi Kami</h4>
+      <p><i class="fab fa-whatsapp"></i> +62 812-3456-7890</p>
+      <p><i class="fas fa-envelope"></i> ceriabusana@gmail.com</p>
+      <p><i class="fab fa-instagram"></i> @ceriabusana</p>
+      <div class="footer-payments">
+        <span>💳 Transfer Bank</span>
+        <span>📱 QRIS</span>
+        <span>🏪 COD</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Ceria Busana. All rights reserved. Made with ❤️ in Indonesia</p>
+  </div>
+</footer>
+
+<!-- ========== BOTTOM NAVIGATION (Mobile) ========== -->
+<nav class="bottom-nav" id="bottom-nav">
+  <button class="bot-nav-btn active" onclick="scrollToTop()"><i class="fas fa-home"></i><span>Beranda</span></button>
+  <button class="bot-nav-btn" onclick="filterCategory('all')"><i class="fas fa-th-large"></i><span>Produk</span></button>
+  <button class="bot-nav-btn" id="bot-cart-btn"><i class="fas fa-shopping-bag"></i><span>Keranjang</span><span class="badge" id="bot-cart-count">0</span></button>
+  <button class="bot-nav-btn" id="bot-wishlist-btn"><i class="fas fa-heart"></i><span>Wishlist</span></button>
+  <button class="bot-nav-btn" onclick="scrollToSection('custom-section')"><i class="fas fa-paint-brush"></i><span>Custom</span></button>
+</nav>
+
+<!-- ========== FLOATING CART BUTTON ========== -->
+<button class="floating-cart" id="floating-cart">
+  <i class="fas fa-shopping-bag"></i>
+  <span id="floating-cart-count">0</span>
+</button>
+
+<!-- ========== CART DRAWER ========== -->
+<div class="overlay" id="overlay"></div>
+<div class="drawer" id="cart-drawer">
+  <div class="drawer-header">
+    <h3><i class="fas fa-shopping-bag"></i> Keranjang Belanja</h3>
+    <button class="drawer-close" id="cart-close"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="drawer-body" id="cart-items">
+    <div class="cart-empty">
+      <div class="cart-empty-icon">🛍️</div>
+      <p>Keranjang masih kosong</p>
+      <button class="btn-primary" onclick="closeDrawer()">Mulai Belanja</button>
+    </div>
+  </div>
+  <div class="drawer-footer" id="cart-footer" style="display:none">
+    <div class="cart-summary">
+      <div class="summary-row"><span>Subtotal</span><span id="cart-subtotal">Rp 0</span></div>
+      <div class="summary-row"><span>Ongkir</span><span id="cart-shipping">Rp 15.000</span></div>
+      <div class="summary-row discount-row" id="discount-row" style="display:none">
+        <span>Diskon</span><span id="cart-discount" class="discount-text">-Rp 0</span>
+      </div>
+      <div class="summary-row total-row"><span>Total</span><span id="cart-total">Rp 0</span></div>
+    </div>
+    <div class="voucher-input">
+      <input type="text" id="voucher-code" placeholder="Masukkan kode voucher..." />
+      <button onclick="applyVoucher()">Pakai</button>
+    </div>
+    <button class="btn-checkout" id="checkout-btn">
+      <i class="fab fa-whatsapp"></i> Checkout via WhatsApp
+    </button>
+  </div>
+</div>
+
+<!-- ========== PRODUCT DETAIL MODAL ========== -->
+<div class="modal-overlay" id="product-modal-overlay">
+  <div class="product-modal" id="product-modal">
+    <button class="modal-close" id="modal-close"><i class="fas fa-times"></i></button>
+    <div class="modal-body" id="modal-body">
+      <!-- Filled by JS -->
+    </div>
+  </div>
+</div>
+
+<!-- ========== WISHLIST DRAWER ========== -->
+<div class="drawer" id="wishlist-drawer">
+  <div class="drawer-header">
+    <h3><i class="fas fa-heart"></i> Wishlist</h3>
+    <button class="drawer-close" id="wishlist-close"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="drawer-body" id="wishlist-items">
+    <div class="cart-empty">
+      <div class="cart-empty-icon">💝</div>
+      <p>Wishlist masih kosong</p>
+    </div>
+  </div>
+</div>
+
+<!-- ========== CHECKOUT MODAL ========== -->
+<div class="modal-overlay" id="checkout-modal-overlay">
+  <div class="checkout-modal" id="checkout-modal">
+    <button class="modal-close" onclick="closeCheckoutModal()"><i class="fas fa-times"></i></button>
+    <h2><i class="fas fa-receipt"></i> Detail Pesanan</h2>
+    <div id="checkout-form-area">
+      <div class="checkout-form">
+        <div class="form-group">
+          <label>Nama Lengkap</label>
+          <input type="text" id="buyer-name" placeholder="Nama Anda" />
+        </div>
+        <div class="form-group">
+          <label>Nomor WhatsApp</label>
+          <input type="tel" id="buyer-wa" placeholder="08xxxxxxxxxx" />
+        </div>
+        <div class="form-group">
+          <label>Alamat Lengkap</label>
+          <textarea id="buyer-address" rows="3" placeholder="Jl., Kota, Provinsi, Kode Pos"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Catatan (Opsional)</label>
+          <textarea id="buyer-notes" rows="2" placeholder="Catatan untuk admin..."></textarea>
+        </div>
+      </div>
+      <div id="checkout-summary-area"></div>
+      <canvas id="barcode-canvas" width="200" height="60" style="display:none"></canvas>
+      <button class="btn-checkout" id="confirm-checkout-btn">
+        <i class="fab fa-whatsapp"></i> Kirim Pesanan ke WhatsApp
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== AI ZOOM MODAL ========== -->
+<div class="modal-overlay" id="ai-zoom-overlay">
+  <div class="ai-zoom-modal">
+    <button class="modal-close" onclick="closeAiZoom()"><i class="fas fa-times"></i></button>
+    <canvas id="ai-zoom-canvas" width="400" height="600"></canvas>
+  </div>
+</div>
+
+<!-- ========== ADMIN LOGIN POPUP ========== -->
+<div class="modal-overlay" id="admin-login-overlay">
+  <div class="admin-login-modal">
+    <div class="admin-login-header">
+      <span>🔐</span>
+      <h3>Admin Login</h3>
+    </div>
+    <div class="form-group">
+      <label>Email Admin</label>
+      <input type="email" id="admin-email" placeholder="admin@ceriabusana.com" />
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="admin-password" placeholder="Password..." />
+    </div>
+    <button class="btn-primary" id="admin-login-btn">Login Admin</button>
+    <button class="btn-ghost" onclick="closeAdminLogin()">Batal</button>
+    <p class="admin-hint">Akses admin: ketuk logo 5x</p>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="firebase-config.js" type="module"></script>
+<script src="app.js" type="module"></script>
+<script src="ai-preview.js" type="module"></script>
+</body>
+</html>
